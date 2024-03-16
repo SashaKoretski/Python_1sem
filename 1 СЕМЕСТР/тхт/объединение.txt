@@ -1,0 +1,29 @@
+def merge(A, B):
+    x = 0
+    y = 0
+    C = A + B
+    k = 0
+    l = 0
+    for i in range(len(C)):
+        if k != 0:
+            C[i] = A[x]
+            x += 1
+        elif l != 0:
+            C[i] = B[y]
+            y += 1
+        elif A[x] > B[y]:
+            C[i] = B[y]
+            y += 1
+            if y > len(B) - 1:
+                k = 1
+        else:
+            C[i] = A[x]
+            x += 1
+            if x > len(A) - 1:
+                l = 1
+    return(C)
+
+
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+print(*merge(a, b))
